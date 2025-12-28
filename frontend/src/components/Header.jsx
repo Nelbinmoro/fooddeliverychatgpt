@@ -53,7 +53,7 @@ export default function Navbar() {
 
             {user?.isAdmin && (
               <Link to="/admin" className="font-semibold hover:text-orange-600">
-                Admin
+                DashBoard
               </Link>
             )}
 
