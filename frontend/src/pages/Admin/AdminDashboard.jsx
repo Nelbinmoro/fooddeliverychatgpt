@@ -216,38 +216,80 @@ export default function AdminDashboard() {
         )}
       </form>
 
-      {/* Products List */}
-      <div className="bg-white shadow rounded p-4 mt-6">
-        <h2 className="text-xl font-semibold mb-4">Products</h2>
+      {/* PRODUCTS — DESKTOP */}
+<div className="hidden md:block bg-white shadow rounded p-4 mt-6">
+  <h2 className="text-xl font-semibold mb-4">Products</h2>
 
-        <ul className="space-y-3">
-          {products.map((item) => (
-            <li
-              key={item._id}
-              className="flex justify-between items-center p-3 border rounded"
-            >
-              <span className="font-medium">
-                {item.name} — ₹{item.price} ({item.category})
-              </span>
+  <ul className="space-y-3">
+    {products.map((item) => (
+      <li
+        key={item._id}
+        className="flex justify-between items-center p-3 border rounded"
+      >
+        <span className="font-medium">
+          {item.name} — ₹{item.price} ({item.category})
+        </span>
 
-              <div className="flex gap-3">
-                <button
-                  onClick={() => handleEdit(item)}
-                  className="px-3 py-1 bg-green-600 text-white rounded"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => deleteProduct(item._id)}
-                  className="px-3 py-1 bg-red-600 text-white rounded"
-                >
-                  Delete
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <div className="flex gap-3">
+          <button
+            onClick={() => handleEdit(item)}
+            className="px-3 py-1 bg-green-600 text-white rounded text-sm"
+          >
+            Edit
+          </button>
+          <button
+            onClick={() => deleteProduct(item._id)}
+            className="px-3 py-1 bg-red-600 text-white rounded text-sm"
+          >
+            Delete
+          </button>
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>
+
+      {/* Mobile Product Cards */}
+<div className="md:hidden space-y-4">
+  {products.map((item) => (
+    <div
+      key={item._id}
+      className="bg-white rounded-lg shadow p-4 flex flex-col gap-2"
+    >
+      <div className="flex justify-between items-start">
+        <h3 className="font-semibold text-sm">{item.name}</h3>
+        <span className="text-green-600 font-semibold text-sm">
+          ₹{item.price}
+        </span>
       </div>
+
+      <p className="text-xs text-gray-500">
+        Category: {item.category}
+      </p>
+
+      <p className="text-xs text-gray-500">
+        Stock: {item.countInStock}
+      </p>
+
+      <div className="flex gap-2 pt-2">
+        <button
+          onClick={() => handleEdit(item)}
+          className="flex-1 py-2 bg-green-600 text-white text-xs rounded"
+        >
+          Edit
+        </button>
+
+        <button
+          onClick={() => deleteProduct(item._id)}
+          className="flex-1 py-2 bg-red-600 text-white text-xs rounded"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  ))}
+</div>
+
     </div>
   );
 }
