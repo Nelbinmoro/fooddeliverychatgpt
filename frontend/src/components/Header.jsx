@@ -102,7 +102,7 @@ export default function Navbar() {
           ${menuOpen ? "translate-x-0" : "translate-x-full"}
         `}
       >
-        <div className="p-6 flex flex-col gap-6 text-lg">
+        <div className="p-6 flex flex-col gap-4 text-sm">
           <button
             className="self-end text-2xl"
             onClick={() => setMenuOpen(false)}
@@ -151,3 +151,4 @@ export default function Navbar() {
     </>
   );
 }
+
