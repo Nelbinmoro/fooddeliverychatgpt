@@ -34,7 +34,7 @@ export default function Signup() {
 
     try {
       await register(form.name, form.email, form.password);
-      navigate("/");
+      navigate("/login");
     } catch (err) {
       console.error("Signup failed:", err);
       setError("Email already exists or invalid details.");
